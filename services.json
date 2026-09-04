@@ -1,0 +1,84 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "name": "Haircut",
+      "category": "Hair",
+      "price": 300,
+      "duration": "30 min",
+      "icon": "bi-scissors",
+      "badge": "Popular",
+      "description": "Precision haircut tailored to your personal style and facial profile. Includes consultation, gentle hair wash, and blow-dry finish."
+    },
+    {
+      "id": 2,
+      "name": "Hair Styling",
+      "category": "Hair",
+      "price": 500,
+      "duration": "45 min",
+      "icon": "bi-wind",
+      "badge": "Trending",
+      "description": "Expert blowouts, beachy waves, glamorous curls, or sleek straightening using premium ceramic tools and heat protection serums."
+    },
+    {
+      "id": 3,
+      "name": "Hair Spa",
+      "category": "Hair",
+      "price": 800,
+      "duration": "60 min",
+      "icon": "bi-droplet-half",
+      "badge": "Recommended",
+      "description": "Intense restorative treatment featuring an organic hair mask, relaxing acupressure scalp massage, and hydrating ozone steam therapy."
+    },
+    {
+      "id": 4,
+      "name": "Facial",
+      "category": "Skin",
+      "price": 700,
+      "duration": "60 min",
+      "icon": "bi-flower1",
+      "badge": "Bestseller",
+      "description": "Deep pore cleansing, gentle fruit enzyme exfoliation, lymphatic facial massage, and a radiant herbal glow mask tailored to your skin type."
+    },
+    {
+      "id": 5,
+      "name": "Manicure",
+      "category": "Nails",
+      "price": 400,
+      "duration": "45 min",
+      "icon": "bi-hand-index",
+      "badge": "Essential",
+      "description": "Comprehensive hand care including nail shaping, gentle cuticle treatment, exfoliating sugar scrub, moisturizing hand massage, and fresh polish."
+    },
+    {
+      "id": 6,
+      "name": "Pedicure",
+      "category": "Nails",
+      "price": 500,
+      "duration": "45 min",
+      "icon": "bi-heart-pulse",
+      "badge": "Relaxing",
+      "description": "Soothing aromatic warm foot soak, dead skin exfoliation, callus smoothing, calming calf massage, and professional nail finishing."
+    },
+    {
+      "id": 7,
+      "name": "Makeup",
+      "category": "Beauty",
+      "price": 1500,
+      "duration": "90 min",
+      "icon": "bi-stars",
+      "badge": "Glamour",
+      "description": "Flawless party and event makeup using high-definition, long-lasting luxury cosmetics. Customized highlighting to match your outfit and event."
+    },
+    {
+      "id": 8,
+      "name": "Hair Coloring",
+      "category": "Hair",
+      "price": 1200,
+      "duration": "90 min",
+      "icon": "bi-palette",
+      "badge": "Premium",
+      "description": "Global hair color, radiant balayage, or vibrant highlights formulated with ammonia-free, nourishing botanical colorants for glossy shine."
+    }
+  ]
+}
