@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="View and manage your booked salon appointments at Glow & Grace. Track booking details or cancel appointments with immediate slot release." />
+  <title>My Appointments | Glow &amp; Grace Salon</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <nav class="navbar navbar-expand-lg navbar-salon sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon-wrapper">
+          <i class="bi bi-stars"></i>
+        </div>
+        <span>Glow &amp; Grace</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSalonNav" aria-controls="navbarSalonNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2" style="color: var(--color-primary);"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSalonNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1 my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="booking.html">Book Appointment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="appointments.html">My Appointments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#contact">Contact</a>
+          </li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-salon-primary btn-sm px-4" href="booking.html">
+              <i class="bi bi-calendar2-check me-1"></i>Book Now
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== PAGE HEADER ==================== -->
+  <header class="py-4" style="background: radial-gradient(circle at top right, #FBECEF 0%, #FDFBF7 70%); border-bottom: 1px solid var(--color-border);">
+    <div class="container text-center">
+      <span class="section-pill"><i class="bi bi-journal-bookmark me-1"></i> Personal Dashboard</span>
+      <h1 class="h2 fw-bold font-serif mb-1">My Salon Appointments</h1>
+      <p class="text-muted small mb-0">Review all your scheduled appointments, check status, or cancel an appointment.</p>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN APPOINTMENTS VIEW ==================== -->
+  <main class="py-5">
+    <div class="container">
+
+      <!-- Action Bar: Filters + Search + New Booking Button -->
+      <div class="row g-3 align-items-center mb-4 pb-3 border-bottom">
+        <div class="col-lg-6">
+          <!-- Filter Tabs -->
+          <div class="d-flex flex-wrap gap-2">
+            <button type="button" class="filter-btn active" data-filter="ALL">
+              All Bookings (<span id="countAll">0</span>)
+            </button>
+            <button type="button" class="filter-btn" data-filter="CONFIRMED">
+              <i class="bi bi-check-circle text-success me-1"></i> Confirmed (<span id="countConfirmed">0</span>)
+            </button>
+            <button type="button" class="filter-btn" data-filter="CANCELLED">
+              <i class="bi bi-x-circle text-danger me-1"></i> Cancelled (<span id="countCancelled">0</span>)
+            </button>
+          </div>
+        </div>
+
+        <div class="col-md-7 col-lg-4">
+          <!-- Search Bar -->
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-muted"></i></span>
+            <input type="text" id="appointmentSearch" class="form-control border-start-0" placeholder="Search by ID, name, or service..." />
+          </div>
+        </div>
+
+        <div class="col-md-5 col-lg-2 text-md-end">
+          <a href="booking.html" class="btn btn-salon-primary w-100">
+            <i class="bi bi-plus-lg me-1"></i> New Booking
+          </a>
+        </div>
+      </div>
+
+      <!-- Appointments Cards Grid -->
+      <div class="row g-4" id="appointmentsContainer">
+        <!-- Rendered dynamically by appointments.js -->
+      </div>
+
+      <!-- Empty State View -->
+      <div id="emptyAppointmentsState" class="text-center py-5 d-none">
+        <div class="p-4 d-inline-block rounded-circle mb-3" style="background-color: var(--color-primary-light); color: var(--color-primary);">
+          <i class="bi bi-calendar-x fs-1"></i>
+        </div>
+        <h3 class="h4 font-serif mb-2">No Appointments Found</h3>
+        <p class="text-muted mx-auto mb-4" style="max-width: 460px;">
+          You do not have any appointments matching this filter. Reserve your personalized hair, skin, or beauty slot now!
+        </p>
+        <a href="booking.html" class="btn btn-salon-primary btn-lg">
+          <i class="bi bi-calendar-plus me-1"></i> Book Your First Appointment
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== CANCELLATION CONFIRMATION MODAL ==================== -->
+  <div class="modal fade" id="cancelConfirmModal" tabindex="-1" aria-labelledby="cancelConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow" style="border-radius: 1.25rem;">
+        
+        <div class="modal-header border-0 pb-0">
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body text-center px-4 pt-0 pb-4">
+          <div class="p-3 rounded-circle d-inline-flex mb-3" style="background-color: #FFEBEE; color: var(--color-booked);">
+            <i class="bi bi-exclamation-triangle fs-2"></i>
+          </div>
+          
+          <h3 class="modal-title font-serif h4 fw-bold mb-2" id="cancelConfirmModalLabel">
+            Cancel This Appointment?
+          </h3>
+          <p class="text-muted small mb-4">
+            Are you sure you want to cancel the following appointment? Once cancelled, this time slot will immediately become available for others to book.
+          </p>
+
+          <!-- Cancellation Target Card -->
+          <div class="p-3 rounded-3 text-start mb-4" style="background-color: var(--color-surface-subtle); border: 1px dashed var(--color-border);">
+            <div class="d-flex justify-content-between mb-1">
+              <span class="text-muted small">Booking ID:</span>
+              <strong class="font-monospace text-dark" id="cancelModalBookingId">--</strong>
+            </div>
+            <div class="d-flex justify-content-between mb-1">
+              <span class="text-muted small">Service:</span>
+              <strong class="text-dark" id="cancelModalService">--</strong>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span class="text-muted small">Date &amp; Time:</span>
+              <strong class="text-dark" id="cancelModalDateTime">--</strong>
+            </div>
+          </div>
+
+          <!-- Buttons -->
+          <div class="d-flex justify-content-center gap-2">
+            <button type="button" class="btn btn-outline-secondary px-4 rounded-pill" data-bs-dismiss="modal">
+              Keep Appointment
+            </button>
+            <button type="button" class="btn btn-danger px-4 rounded-pill" id="btnConfirmCancellation">
+              <i class="bi bi-x-circle me-1"></i> Yes, Cancel Appointment
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer-salon">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-wrapper" style="background: rgba(255,255,255,0.1); color: #FBECEF;">
+              <i class="bi bi-stars"></i>
+            </div>
+            <span class="fs-4 font-serif text-white fw-bold">Glow &amp; Grace</span>
+          </div>
+          <p class="small text-muted mb-3">
+            Your destination for tailored haircuts, revitalizing skin sessions, and premium beauty services.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled small d-flex flex-column gap-2">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="booking.html">Book Appointment</a></li>
+            <li><a href="appointments.html">My Appointments</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h5>Treatments</h5>
+          <ul class="list-unstyled small d-flex flex-column gap-2">
+            <li><a href="booking.html?service=Haircut">Precision Haircut</a></li>
+            <li><a href="booking.html?service=Hair%20Spa">Hydrating Hair Spa</a></li>
+            <li><a href="booking.html?service=Facial">Herbal Glow Facial</a></li>
+            <li><a href="booking.html?service=Makeup">Party Makeup</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h5>Working Hours</h5>
+          <p class="small text-muted mb-1"><strong>Tue - Sun:</strong> 10:00 AM - 07:00 PM</p>
+          <p class="small text-muted mb-3"><strong>Monday:</strong> Closed</p>
+          <a href="booking.html" class="btn btn-salon-gold btn-sm w-100">
+            <i class="bi bi-calendar-event me-1"></i> Book Appointment
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center">
+        <p class="mb-0">
+          &copy; 2026 <strong>Glow &amp; Grace Salon</strong>. All rights reserved. Web Development Internship &amp; College Project.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Main Shared JS -->
+  <script src="js/main.js"></script>
+  <!-- Appointments Controller JS -->
+  <script src="js/appointments.js"></script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Book your salon appointment online at Glow & Grace. Check dynamic slot availability in real-time, select services, and receive instant confirmation." />
+  <title>Book Salon Appointment | Glow &amp; Grace Salon</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <nav class="navbar navbar-expand-lg navbar-salon sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon-wrapper">
+          <i class="bi bi-stars"></i>
+        </div>
+        <span>Glow &amp; Grace</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSalonNav" aria-controls="navbarSalonNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2" style="color: var(--color-primary);"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSalonNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1 my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="booking.html">Book Appointment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="appointments.html">My Appointments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html#contact">Contact</a>
+          </li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-salon-primary btn-sm px-4" href="booking.html">
+              <i class="bi bi-calendar2-check me-1"></i>Book Now
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== PAGE HEADER ==================== -->
+  <header class="py-4" style="background: radial-gradient(circle at top right, #FBECEF 0%, #FDFBF7 70%); border-bottom: 1px solid var(--color-border);">
+    <div class="container text-center">
+      <span class="section-pill"><i class="bi bi-calendar2-event me-1"></i> Instant Reservation</span>
+      <h1 class="h2 fw-bold font-serif mb-1">Book Your Salon Session</h1>
+      <p class="text-muted small mb-0">Follow our quick 5-step process to reserve your preferred date and time slot.</p>
+    </div>
+  </header>
+
+  <!-- ==================== BOOKING WIZARD MAIN SECTION ==================== -->
+  <main class="py-5">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- Left Column: 5-Step Interactive Form -->
+        <div class="col-lg-8">
+          <form id="bookingForm" novalidate>
+
+            <!-- STEP 1: Select Service -->
+            <div class="step-card">
+              <div class="step-card-title">
+                <span class="step-badge">1</span>
+                <span>Select Salon Service</span>
+              </div>
+              <p class="text-muted small mb-3">Choose the treatment or service you would like to book today.</p>
+
+              <div class="mb-3">
+                <label for="serviceSelect" class="form-label">Salon Service <span class="text-danger">*</span></label>
+                <select class="form-select form-select-lg" id="serviceSelect" required>
+                  <option value="">-- Choose a Salon Service --</option>
+                  <!-- Populated dynamically by booking.js -->
+                </select>
+                <div class="invalid-feedback">Please choose a salon service from the list.</div>
+              </div>
+
+              <!-- Service Details Pill Card (Shown when selected) -->
+              <div id="serviceInfoCard" class="p-3 rounded-3 mt-3 d-none" style="background-color: var(--color-primary-light); border: 1px solid #F3CFD7;">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <strong id="selectedServiceName" class="font-serif fs-5 text-dark">Service Name</strong>
+                  <span id="selectedServicePrice" class="fs-5 fw-bold" style="color: var(--color-primary);">₹0</span>
+                </div>
+                <div class="text-muted small mb-1">
+                  <i class="bi bi-clock me-1"></i> Estimated Duration: <strong id="selectedServiceDuration">0 min</strong>
+                </div>
+                <p id="selectedServiceDesc" class="text-muted small mb-0">Description goes here.</p>
+              </div>
+            </div>
+
+            <!-- STEP 2: Select Date -->
+            <div class="step-card">
+              <div class="step-card-title">
+                <span class="step-badge">2</span>
+                <span>Select Appointment Date</span>
+              </div>
+              <p class="text-muted small mb-3">Pick your desired date. Past dates are automatically blocked.</p>
+
+              <div class="mb-2">
+                <label for="appointmentDate" class="form-label">Appointment Date <span class="text-danger">*</span></label>
+                <div class="input-group">
+                  <span class="input-group-text bg-white"><i class="bi bi-calendar3"></i></span>
+                  <input type="date" class="form-control form-control-lg" id="appointmentDate" required />
+                  <div class="invalid-feedback">Please select a valid appointment date.</div>
+                </div>
+                <small class="text-muted mt-1 d-block">
+                  <i class="bi bi-info-circle me-1"></i>You can book up to 60 days in advance.
+                </small>
+              </div>
+            </div>
+
+            <!-- STEP 3: Select Time Slot (Dynamic Availability Engine) -->
+            <div class="step-card">
+              <div class="step-card-title">
+                <span class="step-badge">3</span>
+                <span>Select Available Time Slot</span>
+              </div>
+              <p class="text-muted small mb-2">
+                Real-time slot availability for your chosen date. Click on any green <span class="badge bg-success-subtle text-success">Available</span> slot.
+              </p>
+
+              <!-- Placeholder when no date is picked yet -->
+              <div id="slotsPlaceholder" class="p-4 rounded-3 text-center" style="background-color: var(--color-surface-subtle); border: 1.5px dashed var(--color-border);">
+                <i class="bi bi-calendar-event fs-2 text-muted mb-2 d-block"></i>
+                <p class="text-muted mb-0">Please select an appointment date in <strong>Step 2</strong> to view available time slots.</p>
+              </div>
+
+              <!-- Dynamic Slots Container (Shown when date selected) -->
+              <div id="slotsContainer" class="d-none">
+                <!-- Legend & Availability Counter -->
+                <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                  <div id="slotAvailabilityNote" class="small text-muted">
+                    <!-- Updated by JS -->
+                  </div>
+                  <div class="d-flex gap-3 small">
+                    <span class="d-flex align-items-center gap-1">
+                      <span class="d-inline-block rounded-circle" style="width: 10px; height: 10px; background-color: var(--color-available);"></span>
+                      Available
+                    </span>
+                    <span class="d-flex align-items-center gap-1 text-muted">
+                      <span class="d-inline-block rounded-circle" style="width: 10px; height: 10px; background-color: var(--color-booked);"></span>
+                      Booked
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Slots Grid: 9 Standard slots -->
+                <div class="slots-grid" id="slotsGrid">
+                  <!-- Populated dynamically by booking.js -->
+                </div>
+
+                <div id="slotErrorMsg" class="alert alert-danger mt-3 py-2 small d-none" role="alert">
+                  <i class="bi bi-exclamation-triangle-fill me-1"></i> Please choose an available time slot to proceed.
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 4: Customer Details -->
+            <div class="step-card">
+              <div class="step-card-title">
+                <span class="step-badge">4</span>
+                <span>Customer Information</span>
+              </div>
+              <p class="text-muted small mb-3">Please provide your contact information for appointment confirmation.</p>
+
+              <div class="row g-3">
+                <div class="col-12">
+                  <label for="customerName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-white"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control" id="customerName" placeholder="e.g. Priya Sharma" minlength="3" required />
+                    <div class="invalid-feedback">Please enter a valid full name (at least 3 alphabetic characters).</div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="customerPhone" class="form-label">Mobile Number <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-white">+91</span>
+                    <input type="tel" class="form-control" id="customerPhone" placeholder="10-digit mobile number" maxlength="10" required />
+                    <div class="invalid-feedback">Please enter a valid 10-digit Indian mobile number (e.g. 9876543210).</div>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="customerEmail" class="form-label">Email Address <span class="text-danger">*</span></label>
+                  <div class="input-group">
+                    <span class="input-group-text bg-white"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control" id="customerEmail" placeholder="e.g. priya@example.com" required />
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 5: Confirm Button Trigger -->
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-salon-primary btn-lg py-3 shadow">
+                <i class="bi bi-check2-circle me-2 fs-5"></i> Confirm Appointment
+              </button>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- Right Column: Live Booking Summary Sidebar -->
+        <div class="col-lg-4">
+          <div class="booking-summary-card">
+            <h4 class="h5 font-serif mb-3 pb-2 border-bottom d-flex align-items-center justify-content-between">
+              <span>Appointment Summary</span>
+              <span class="badge bg-secondary-subtle text-secondary small">Live</span>
+            </h4>
+
+            <div class="summary-row">
+              <span class="summary-label"><i class="bi bi-scissors me-1"></i> Service:</span>
+              <span class="summary-value" id="summaryService">Not selected</span>
+            </div>
+
+            <div class="summary-row">
+              <span class="summary-label"><i class="bi bi-clock me-1"></i> Duration:</span>
+              <span class="summary-value" id="summaryDuration">--</span>
+            </div>
+
+            <div class="summary-row">
+              <span class="summary-label"><i class="bi bi-calendar3 me-1"></i> Date:</span>
+              <span class="summary-value" id="summaryDate">Not selected</span>
+            </div>
+
+            <div class="summary-row">
+              <span class="summary-label"><i class="bi bi-alarm me-1"></i> Time Slot:</span>
+              <span class="summary-value" id="summaryTime">Not selected</span>
+            </div>
+
+            <div class="summary-row">
+              <span class="summary-label"><i class="bi bi-person me-1"></i> Customer:</span>
+              <span class="summary-value" id="summaryCustomer">Guest</span>
+            </div>
+
+            <div class="summary-row">
+              <span class="summary-label"><i class="bi bi-tag me-1"></i> Base Rate:</span>
+              <span class="summary-value" id="summaryPrice">₹0</span>
+            </div>
+
+            <!-- Total Amount Box -->
+            <div class="summary-total">
+              <span class="total-label">Total Payable:</span>
+              <span class="total-amount" id="summaryTotal">₹0</span>
+            </div>
+
+            <div class="p-2 rounded bg-light small text-muted text-center mb-3">
+              <i class="bi bi-shield-check text-success me-1"></i> No advance payment required. Pay at salon counter.
+            </div>
+
+            <!-- Link to My Appointments -->
+            <div class="text-center">
+              <a href="appointments.html" class="small text-muted text-decoration-underline">
+                <i class="bi bi-journal-text me-1"></i> View My Existing Appointments
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== BOOKING CONFIRMATION MODAL ==================== -->
+  <div class="modal fade" id="bookingConfirmModal" tabindex="-1" aria-labelledby="bookingConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow-lg" style="border-radius: 1.25rem; overflow: hidden;">
+        
+        <div class="modal-header modal-header-salon text-center py-4 flex-column">
+          <div class="success-icon-circle">
+            <i class="bi bi-check-lg"></i>
+          </div>
+          <h3 class="modal-title font-serif h4 fw-bold text-dark" id="bookingConfirmModalLabel">
+            Appointment Confirmed!
+          </h3>
+          <p class="text-muted small mb-0">Your salon appointment has been scheduled successfully.</p>
+        </div>
+
+        <div class="modal-body p-4">
+          <!-- Receipt Box -->
+          <div class="receipt-box text-center mb-4">
+            <span class="text-muted small text-uppercase letter-spacing-1 d-block mb-1">Your Booking ID</span>
+            <div class="receipt-id-badge mb-3" id="confirmBookingId">GG-2026-001</div>
+
+            <div class="d-flex justify-content-between py-1 border-bottom small text-start">
+              <span class="text-muted">Customer Name:</span>
+              <strong class="text-dark" id="confirmCustomerName">--</strong>
+            </div>
+            <div class="d-flex justify-content-between py-1 border-bottom small text-start">
+              <span class="text-muted">Service Booked:</span>
+              <strong class="text-dark" id="confirmService">--</strong>
+            </div>
+            <div class="d-flex justify-content-between py-1 border-bottom small text-start">
+              <span class="text-muted">Date:</span>
+              <strong class="text-dark" id="confirmDate">--</strong>
+            </div>
+            <div class="d-flex justify-content-between py-1 border-bottom small text-start">
+              <span class="text-muted">Time Slot:</span>
+              <strong class="text-dark" id="confirmTime">--</strong>
+            </div>
+            <div class="d-flex justify-content-between py-1 border-bottom small text-start">
+              <span class="text-muted">Duration:</span>
+              <strong class="text-dark" id="confirmDuration">--</strong>
+            </div>
+            <div class="d-flex justify-content-between py-1 border-bottom small text-start">
+              <span class="text-muted">Price:</span>
+              <strong class="text-dark" id="confirmPrice">--</strong>
+            </div>
+            <div class="d-flex justify-content-between py-1 small text-start">
+              <span class="text-muted">Status:</span>
+              <span class="badge bg-success-subtle text-success fw-bold">✓ Confirmed</span>
+            </div>
+          </div>
+
+          <div class="alert alert-info py-2 small mb-0">
+            <i class="bi bi-info-circle me-1"></i> Please arrive 10 minutes prior to your scheduled slot.
+          </div>
+        </div>
+
+        <div class="modal-footer bg-light border-0 p-3 d-flex flex-column flex-sm-row gap-2">
+          <button type="button" class="btn btn-outline-secondary w-100 w-sm-auto rounded-pill" onclick="window.print()">
+            <i class="bi bi-printer me-1"></i> Print Receipt
+          </button>
+          <a href="appointments.html" class="btn btn-salon-primary w-100 w-sm-auto rounded-pill">
+            <i class="bi bi-card-checklist me-1"></i> Go to My Appointments
+          </a>
+          <button type="button" class="btn btn-salon-outline w-100 w-sm-auto rounded-pill" data-bs-dismiss="modal" onclick="resetBookingForm()">
+            Book Another
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer-salon">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-wrapper" style="background: rgba(255,255,255,0.1); color: #FBECEF;">
+              <i class="bi bi-stars"></i>
+            </div>
+            <span class="fs-4 font-serif text-white fw-bold">Glow &amp; Grace</span>
+          </div>
+          <p class="small text-muted mb-3">
+            Your destination for tailored haircuts, revitalizing skin sessions, and premium beauty services.
+          </p>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled small d-flex flex-column gap-2">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="booking.html">Book Appointment</a></li>
+            <li><a href="appointments.html">My Appointments</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h5>Treatments</h5>
+          <ul class="list-unstyled small d-flex flex-column gap-2">
+            <li><a href="booking.html?service=Haircut">Precision Haircut</a></li>
+            <li><a href="booking.html?service=Hair%20Spa">Hydrating Hair Spa</a></li>
+            <li><a href="booking.html?service=Facial">Herbal Glow Facial</a></li>
+            <li><a href="booking.html?service=Makeup">Party Makeup</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h5>Working Hours</h5>
+          <p class="small text-muted mb-1"><strong>Tue - Sun:</strong> 10:00 AM - 07:00 PM</p>
+          <p class="small text-muted mb-3"><strong>Monday:</strong> Closed</p>
+          <a href="booking.html" class="btn btn-salon-gold btn-sm w-100">
+            <i class="bi bi-calendar-event me-1"></i> Book Appointment
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center">
+        <p class="mb-0">
+          &copy; 2026 <strong>Glow &amp; Grace Salon</strong>. All rights reserved. Web Development Internship &amp; College Project.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Main Shared JS -->
+  <script src="js/main.js"></script>
+  <!-- Booking Logic JS -->
+  <script src="js/booking.js"></script>
+</body>
+</html>

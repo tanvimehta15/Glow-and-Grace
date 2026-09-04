@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Glow & Grace Salon - Premier salon appointment booking system for haircuts, hair styling, hair spa, facials, and luxury beauty treatments." />
+  <title>Glow & Grace Salon | Luxury Hair, Skin & Beauty Booking</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION BAR ==================== -->
+  <nav class="navbar navbar-expand-lg navbar-salon sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <div class="brand-icon-wrapper">
+          <i class="bi bi-stars"></i>
+        </div>
+        <span>Glow &amp; Grace</span>
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSalonNav" aria-controls="navbarSalonNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2" style="color: var(--color-primary);"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSalonNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-1 my-2 my-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="services.html">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="booking.html">Book Appointment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="appointments.html">My Appointments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-salon-primary btn-sm px-4" href="booking.html">
+              <i class="bi bi-calendar2-check me-1"></i>Book Now
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <div class="hero-badge">
+            <i class="bi bi-gem"></i> Premium Salon &amp; Wellness Experience
+          </div>
+          <h1 class="hero-title">
+            Reveal Your Natural Elegance &amp; Inner Glow
+          </h1>
+          <p class="hero-subtitle">
+            Welcome to <strong>Glow &amp; Grace Salon</strong>. Experience bespoke hair transformations, revitalizing skincare rituals, and luxury beauty care customized for you.
+          </p>
+
+          <div class="d-flex flex-wrap gap-3">
+            <a href="booking.html" class="btn btn-salon-primary btn-lg">
+              <i class="bi bi-calendar-plus"></i> Book an Appointment
+            </a>
+            <a href="services.html" class="btn btn-salon-outline btn-lg">
+              <i class="bi bi-grid"></i> Explore All Services
+            </a>
+          </div>
+
+          <!-- Feature Bullets -->
+          <div class="hero-features-list">
+            <div class="hero-feature-item">
+              <i class="bi bi-patch-check-fill"></i>
+              <span>Certified Expert Stylists</span>
+            </div>
+            <div class="hero-feature-item">
+              <i class="bi bi-shield-check"></i>
+              <span>100% Sanitized &amp; Hygienic</span>
+            </div>
+            <div class="hero-feature-item">
+              <i class="bi bi-flower2"></i>
+              <span>Cruelty-Free Organic Care</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="hero-visual-card text-center">
+            <div class="d-inline-flex p-3 rounded-circle mb-3" style="background: var(--color-primary-light); color: var(--color-primary);">
+              <i class="bi bi-clock-history fs-1"></i>
+            </div>
+            <h3 class="h4 mb-2">Real-Time Slot Booking</h3>
+            <p class="text-muted small mb-4">
+              Select your favorite service, pick your preferred date, and check live availability instantly with our intelligent booking engine.
+            </p>
+
+            <div class="p-3 rounded-3 mb-4 text-start" style="background-color: var(--color-surface-subtle); border: 1px dashed var(--color-border);">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <span class="small text-muted"><i class="bi bi-scissors me-1 text-salon-primary"></i> Popular Service:</span>
+                <span class="badge bg-success-subtle text-success small">Available Today</span>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <strong>Hair Spa &amp; Scalp Revitalizer</strong>
+                <span class="fw-bold" style="color: var(--color-primary);">₹800</span>
+              </div>
+            </div>
+
+            <a href="booking.html?service=Hair%20Spa" class="btn btn-salon-primary w-100">
+              <i class="bi bi-arrow-right-circle me-1"></i> Quick Reserve Slot
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SHORT INTRODUCTION ==================== -->
+  <section class="py-5" style="background-color: #FFFFFF; border-bottom: 1px solid var(--color-border);">
+    <div class="container py-4">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <div class="section-pill">Our Philosophy</div>
+          <h2 class="section-title">Where Hair Artistry Meets Holistic Pampering</h2>
+          <p class="text-muted mb-4">
+            Founded with a passion for excellence, <strong>Glow &amp; Grace</strong> provides a tranquil sanctuary away from the hustle and bustle of city life. We believe beauty is about confidence, relaxation, and bespoke care.
+          </p>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <div class="p-3 rounded-3" style="background: var(--color-surface-subtle);">
+                <h4 class="h2 fw-bold mb-0" style="color: var(--color-primary);">5,000+</h4>
+                <p class="small text-muted mb-0">Delighted Clients Served</p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="p-3 rounded-3" style="background: var(--color-surface-subtle);">
+                <h4 class="h2 fw-bold mb-0" style="color: var(--color-accent-gold);">4.9 ★</h4>
+                <p class="small text-muted mb-0">Average Client Rating</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="p-4 rounded-4 text-center h-100" style="background: #FFF7F8; border: 1px solid #F5DDE2;">
+                <i class="bi bi-magic fs-1 mb-2" style="color: var(--color-primary);"></i>
+                <h5 class="fw-bold">Custom Styling</h5>
+                <p class="text-muted small mb-0">Personalized consultations before every service.</p>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-4 rounded-4 text-center h-100" style="background: #FAF7F2; border: 1px solid #EAE0D5;">
+                <i class="bi bi-cup-hot fs-1 mb-2" style="color: var(--color-accent-gold);"></i>
+                <h5 class="fw-bold">Comfort Ambience</h5>
+                <p class="text-muted small mb-0">Complimentary herbal teas and soothing music.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== POPULAR SERVICES SECTION ==================== -->
+  <section class="py-5" style="background-color: var(--color-bg);">
+    <div class="container py-4">
+      <div class="text-center section-header">
+        <span class="section-pill">Handcrafted Treatments</span>
+        <h2 class="section-title">Our Most Popular Services</h2>
+        <p class="section-subtitle mx-auto">
+          Explore our client-favorite salon rituals. Choose any service below to reserve your appointment slot immediately.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Service Card 1: Haircut -->
+        <div class="col-md-6 col-lg-3">
+          <div class="salon-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="service-card-icon">
+                <i class="bi bi-scissors"></i>
+              </div>
+              <span class="badge-rose">Popular</span>
+            </div>
+            <h4 class="h5 mb-2">Haircut</h4>
+            <p class="text-muted small mb-3 flex-grow-1">
+              Precision haircut tailored to your personal style. Includes consultation, hair wash, and blow-dry.
+            </p>
+            <div class="d-flex justify-content-between align-items-center pt-3 border-top mb-3">
+              <span class="service-price-tag">₹300</span>
+              <span class="service-duration-tag"><i class="bi bi-clock me-1"></i>30 min</span>
+            </div>
+            <a href="booking.html?service=1" class="btn btn-salon-outline w-100 btn-sm">
+              <i class="bi bi-calendar-check me-1"></i> Book Now
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 2: Hair Spa -->
+        <div class="col-md-6 col-lg-3">
+          <div class="salon-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="service-card-icon">
+                <i class="bi bi-droplet-half"></i>
+              </div>
+              <span class="badge-gold">Recommended</span>
+            </div>
+            <h4 class="h5 mb-2">Hair Spa</h4>
+            <p class="text-muted small mb-3 flex-grow-1">
+              Intense restorative treatment featuring an organic hair mask, scalp massage, and steam therapy.
+            </p>
+            <div class="d-flex justify-content-between align-items-center pt-3 border-top mb-3">
+              <span class="service-price-tag">₹800</span>
+              <span class="service-duration-tag"><i class="bi bi-clock me-1"></i>60 min</span>
+            </div>
+            <a href="booking.html?service=3" class="btn btn-salon-outline w-100 btn-sm">
+              <i class="bi bi-calendar-check me-1"></i> Book Now
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 3: Facial -->
+        <div class="col-md-6 col-lg-3">
+          <div class="salon-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="service-card-icon">
+                <i class="bi bi-flower1"></i>
+              </div>
+              <span class="badge-rose">Bestseller</span>
+            </div>
+            <h4 class="h5 mb-2">Facial</h4>
+            <p class="text-muted small mb-3 flex-grow-1">
+              Deep pore cleansing, gentle fruit exfoliation, relaxing facial massage, and radiant glow pack.
+            </p>
+            <div class="d-flex justify-content-between align-items-center pt-3 border-top mb-3">
+              <span class="service-price-tag">₹700</span>
+              <span class="service-duration-tag"><i class="bi bi-clock me-1"></i>60 min</span>
+            </div>
+            <a href="booking.html?service=4" class="btn btn-salon-outline w-100 btn-sm">
+              <i class="bi bi-calendar-check me-1"></i> Book Now
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 4: Makeup -->
+        <div class="col-md-6 col-lg-3">
+          <div class="salon-card p-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="service-card-icon">
+                <i class="bi bi-stars"></i>
+              </div>
+              <span class="badge-gold">Glamour</span>
+            </div>
+            <h4 class="h5 mb-2">Makeup</h4>
+            <p class="text-muted small mb-3 flex-grow-1">
+              Flawless event and party makeup with high-definition, long-lasting luxury cosmetics.
+            </p>
+            <div class="d-flex justify-content-between align-items-center pt-3 border-top mb-3">
+              <span class="service-price-tag">₹1500</span>
+              <span class="service-duration-tag"><i class="bi bi-clock me-1"></i>90 min</span>
+            </div>
+            <a href="booking.html?service=7" class="btn btn-salon-outline w-100 btn-sm">
+              <i class="bi bi-calendar-check me-1"></i> Book Now
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Link to All Services -->
+      <div class="text-center mt-5">
+        <a href="services.html" class="btn btn-salon-primary px-4">
+          <i class="bi bi-collection me-1"></i> View All 8 Salon Services
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHY CHOOSE US ==================== -->
+  <section class="py-5" style="background-color: #FFFFFF; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+    <div class="container py-4">
+      <div class="text-center section-header">
+        <span class="section-pill">The Glow Difference</span>
+        <h2 class="section-title">Why Choose Glow &amp; Grace</h2>
+        <p class="section-subtitle mx-auto">
+          We combine cutting-edge styling techniques with premium hospitality and transparent booking.
+        </p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 text-center h-100" style="background-color: var(--color-bg); border: 1px solid var(--color-border);">
+            <div class="d-inline-flex p-3 rounded-circle mb-3" style="background: var(--color-primary-light); color: var(--color-primary);">
+              <i class="bi bi-calendar2-range fs-2"></i>
+            </div>
+            <h4 class="h5 mb-2">Live Slot Availability</h4>
+            <p class="text-muted small mb-0">
+              No waiting or endless phone calls. Select any date to see exact open slots in real time.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 text-center h-100" style="background-color: var(--color-bg); border: 1px solid var(--color-border);">
+            <div class="d-inline-flex p-3 rounded-circle mb-3" style="background: var(--color-accent-gold-light); color: var(--color-accent-gold);">
+              <i class="bi bi-currency-rupee fs-2"></i>
+            </div>
+            <h4 class="h5 mb-2">Transparent Pricing</h4>
+            <p class="text-muted small mb-0">
+              Honest, upfront salon rates with zero surprise fees. Clear duration breakdown for each service.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 text-center h-100" style="background-color: var(--color-bg); border: 1px solid var(--color-border);">
+            <div class="d-inline-flex p-3 rounded-circle mb-3" style="background: var(--color-primary-light); color: var(--color-primary);">
+              <i class="bi bi-heart fs-2"></i>
+            </div>
+            <h4 class="h5 mb-2">Hassle-Free Cancellation</h4>
+            <p class="text-muted small mb-0">
+              Plans changed? Manage or cancel your booking anytime directly under "My Appointments" with 1 click.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT SECTION ==================== -->
+  <section class="py-5" id="contact" style="background-color: var(--color-bg);">
+    <div class="container py-4">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-5">
+          <span class="section-pill">Visit Us</span>
+          <h2 class="section-title">Get in Touch with Glow &amp; Grace</h2>
+          <p class="text-muted mb-4">
+            Have questions about bridal packages or hair treatments? Drop by our studio or message us anytime.
+          </p>
+
+          <div class="d-flex flex-column gap-3">
+            <div class="d-flex align-items-start gap-3">
+              <div class="p-2 rounded-circle bg-white border" style="color: var(--color-primary);">
+                <i class="bi bi-geo-alt fs-5"></i>
+              </div>
+              <div>
+                <strong class="d-block">Salon Address</strong>
+                <span class="text-muted small">42 Rosewood Avenue, Blossom District, Mumbai 400050</span>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start gap-3">
+              <div class="p-2 rounded-circle bg-white border" style="color: var(--color-primary);">
+                <i class="bi bi-telephone fs-5"></i>
+              </div>
+              <div>
+                <strong class="d-block">Phone Inquiries</strong>
+                <span class="text-muted small">+91 98765 43210 / +91 022 2840 9999</span>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-start gap-3">
+              <div class="p-2 rounded-circle bg-white border" style="color: var(--color-primary);">
+                <i class="bi bi-clock fs-5"></i>
+              </div>
+              <div>
+                <strong class="d-block">Working Hours</strong>
+                <span class="text-muted small">Tuesday – Sunday: 10:00 AM to 07:00 PM (Mondays Closed)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="p-4 p-md-5 rounded-4 bg-white border shadow-sm">
+            <h3 class="h4 mb-3">Send Us a Message</h3>
+            <form onsubmit="event.preventDefault(); alert('Thank you for contacting Glow & Grace! Our coordinator will respond shortly.'); this.reset();">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Your Name</label>
+                  <input type="text" class="form-control" placeholder="e.g. Aarti Shah" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Phone Number</label>
+                  <input type="tel" class="form-control" placeholder="10-digit mobile" pattern="[0-9]{10}" required />
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Email Address</label>
+                  <input type="email" class="form-control" placeholder="name@example.com" required />
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Your Message or Query</label>
+                  <textarea class="form-control" rows="3" placeholder="Tell us how we can assist you..." required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-salon-primary px-4">
+                    <i class="bi bi-send me-1"></i> Send Inquiry
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer-salon">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <div class="brand-icon-wrapper" style="background: rgba(255,255,255,0.1); color: #FBECEF;">
+              <i class="bi bi-stars"></i>
+            </div>
+            <span class="fs-4 font-serif text-white fw-bold">Glow &amp; Grace</span>
+          </div>
+          <p class="small text-muted mb-3">
+            Your destination for elevated hair styling, restorative skin therapy, and luxury nail pampering.
+          </p>
+          <div class="d-flex gap-2">
+            <a href="#" class="btn btn-outline-light btn-sm rounded-circle" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="btn btn-outline-light btn-sm rounded-circle" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="btn btn-outline-light btn-sm rounded-circle" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="col-6 col-lg-2">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled small d-flex flex-column gap-2">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="booking.html">Book Appointment</a></li>
+            <li><a href="appointments.html">My Appointments</a></li>
+          </ul>
+        </div>
+
+        <div class="col-6 col-lg-3">
+          <h5>Top Treatments</h5>
+          <ul class="list-unstyled small d-flex flex-column gap-2">
+            <li><a href="booking.html?service=Haircut">Precision Haircut</a></li>
+            <li><a href="booking.html?service=Hair%20Spa">Hydrating Hair Spa</a></li>
+            <li><a href="booking.html?service=Facial">Herbal Glow Facial</a></li>
+            <li><a href="booking.html?service=Makeup">Party &amp; Bridal Makeup</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h5>Salon Hours</h5>
+          <p class="small text-muted mb-1"><strong>Tue - Sun:</strong> 10:00 AM - 07:00 PM</p>
+          <p class="small text-muted mb-3"><strong>Monday:</strong> Closed (Deep Cleaning)</p>
+          <a href="booking.html" class="btn btn-salon-gold btn-sm w-100">
+            <i class="bi bi-calendar-event me-1"></i> Book Appointment
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom text-center">
+        <p class="mb-0">
+          &copy; 2026 <strong>Glow &amp; Grace Salon</strong>. All rights reserved. Web Development Internship &amp; College Project.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Main Shared JS -->
+  <script src="js/main.js"></script>
+</body>
+</html>
