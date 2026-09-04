@@ -1,0 +1,712 @@
+/* ==========================================================================
+   GLOW & GRACE SALON - MAIN STYLESHEET
+   A modern, elegant salon styling with cream, blush pink, and rose gold tones.
+   ========================================================================== */
+
+/* ---------------- Google Fonts Import ---------------- */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+/* ---------------- Design System & CSS Variables ---------------- */
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Color Palette */
+  --color-bg: #FDFBF7;
+  --color-surface: #FFFFFF;
+  --color-surface-subtle: #F8F3ED;
+  --color-border: #EFE6DD;
+  --color-border-hover: #E3D4C6;
+  
+  --color-text-main: #2D2529;
+  --color-text-muted: #6E646A;
+  --color-text-light: #9B9197;
+
+  /* Rose Gold / Blush Highlights */
+  --color-primary: #B8596C;
+  --color-primary-hover: #A04759;
+  --color-primary-light: #FBECEF;
+  --color-primary-soft: rgba(184, 89, 108, 0.12);
+
+  --color-accent-gold: #C5A059;
+  --color-accent-gold-light: #FBF6EC;
+
+  /* Status Colors */
+  --color-available: #2E7D32;
+  --color-available-bg: #E8F5E9;
+  --color-booked: #C62828;
+  --color-booked-bg: #FFEBEE;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(45, 37, 41, 0.04);
+  --shadow-md: 0 8px 24px rgba(45, 37, 41, 0.08);
+  --shadow-lg: 0 16px 40px rgba(184, 89, 108, 0.12);
+
+  /* Transitions */
+  --transition: all 0.25s ease-in-out;
+}
+
+/* ---------------- Global Reset & Typography ---------------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+h1, h2, h3, h4, .font-serif {
+  font-family: var(--font-serif);
+  color: var(--color-text-main);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* ---------------- Buttons ---------------- */
+.btn-salon-primary {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 50rem;
+  padding: 0.65rem 1.6rem;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-salon-primary:hover,
+.btn-salon-primary:focus {
+  background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-salon-outline {
+  background-color: transparent;
+  border: 1.5px solid var(--color-primary);
+  color: var(--color-primary);
+  font-weight: 600;
+  border-radius: 50rem;
+  padding: 0.65rem 1.6rem;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-salon-outline:hover,
+.btn-salon-outline:focus {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-salon-gold {
+  background-color: var(--color-accent-gold);
+  border: 1px solid var(--color-accent-gold);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 50rem;
+  padding: 0.65rem 1.6rem;
+  transition: var(--transition);
+}
+
+.btn-salon-gold:hover {
+  background-color: #B28E46;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------------- Navigation Bar ---------------- */
+.navbar-salon {
+  background-color: rgba(253, 251, 247, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.85rem 0;
+  transition: var(--transition);
+}
+
+.navbar-salon .navbar-brand {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.navbar-salon .brand-icon-wrapper {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary-light), #F8D9DE);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.navbar-salon .nav-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: 0.5rem 1rem;
+  border-radius: 50rem;
+  transition: var(--transition);
+}
+
+.navbar-salon .nav-link:hover {
+  color: var(--color-primary);
+}
+
+.navbar-salon .nav-link.active {
+  color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  font-weight: 600;
+}
+
+/* ---------------- Hero Section ---------------- */
+.hero-section {
+  background: radial-gradient(circle at top right, #FBECEF 0%, #FDFBF7 60%);
+  padding: 4.5rem 0 3.5rem;
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  padding: 0.35rem 0.9rem;
+  border-radius: 50rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  line-height: 1.18;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+}
+
+.hero-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  max-width: 540px;
+  margin-bottom: 1.8rem;
+}
+
+.hero-features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
+}
+
+.hero-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.hero-feature-item i {
+  color: var(--color-primary);
+  font-size: 1.1rem;
+}
+
+.hero-visual-card {
+  background: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+/* ---------------- Cards & Surfaces ---------------- */
+.salon-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  transition: var(--transition);
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.salon-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.service-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.service-price-tag {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.service-duration-tag {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+  background-color: var(--color-surface-subtle);
+  padding: 0.2rem 0.6rem;
+  border-radius: 50rem;
+}
+
+/* ---------------- Section Headers ---------------- */
+.section-header {
+  margin-bottom: 2.5rem;
+}
+
+.section-pill {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  padding: 0.25rem 0.8rem;
+  border-radius: 50rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 2.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  color: var(--color-text-muted);
+  max-width: 600px;
+}
+
+/* ---------------- Category Filter Tabs ---------------- */
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  padding: 0.45rem 1.2rem;
+  border-radius: 50rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.filter-btn.active {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #FFFFFF;
+}
+
+/* ---------------- Booking Wizard Steps ---------------- */
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-right: 0.5rem;
+}
+
+.step-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.step-card:focus-within {
+  border-color: #D9A0AC;
+  box-shadow: 0 4px 16px rgba(184, 89, 108, 0.08);
+}
+
+.step-card-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* ---------------- Dynamic Time Slot Engine ---------------- */
+.slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+}
+
+.time-slot-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: 0.75rem;
+  border: 1.5px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text-main);
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  user-select: none;
+}
+
+.time-slot-btn .slot-time {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.time-slot-btn .slot-status {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.2rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 50rem;
+}
+
+/* Available Slot State */
+.time-slot-btn.slot-available {
+  border-color: #E2DDD5;
+}
+
+.time-slot-btn.slot-available .slot-status {
+  background-color: var(--color-available-bg);
+  color: var(--color-available);
+}
+
+.time-slot-btn.slot-available:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(184, 89, 108, 0.12);
+}
+
+/* Selected Slot State */
+.time-slot-btn.slot-selected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: #FFFFFF !important;
+  box-shadow: 0 6px 16px rgba(184, 89, 108, 0.28);
+  transform: scale(1.02);
+}
+
+.time-slot-btn.slot-selected .slot-status {
+  background-color: #FFFFFF;
+  color: var(--color-primary);
+}
+
+/* Booked / Disabled Slot State */
+.time-slot-btn.slot-booked {
+  background-color: var(--color-surface-subtle);
+  border-color: #EFE8E1;
+  color: #A0969C;
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.time-slot-btn.slot-booked .slot-time {
+  text-decoration: line-through;
+}
+
+.time-slot-btn.slot-booked .slot-status {
+  background-color: var(--color-booked-bg);
+  color: var(--color-booked);
+}
+
+/* ---------------- Booking Live Summary Sidebar ---------------- */
+.booking-summary-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 100px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--color-border);
+  font-size: 0.92rem;
+}
+
+.summary-row:last-of-type {
+  border-bottom: none;
+}
+
+.summary-label {
+  color: var(--color-text-muted);
+}
+
+.summary-value {
+  font-weight: 600;
+  text-align: right;
+  color: var(--color-text-main);
+}
+
+.summary-total {
+  background-color: var(--color-primary-light);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin: 1.2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-total .total-label {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.summary-total .total-amount {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ---------------- Form Controls ---------------- */
+.form-control, .form-select {
+  border: 1.5px solid var(--color-border);
+  border-radius: 0.65rem;
+  padding: 0.65rem 0.95rem;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  background-color: #FFFFFF;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.25rem rgba(184, 89, 108, 0.15);
+}
+
+.form-label {
+  font-weight: 600;
+  font-size: 0.88rem;
+  margin-bottom: 0.35rem;
+  color: var(--color-text-main);
+}
+
+.invalid-feedback {
+  font-size: 0.82rem;
+}
+
+/* ---------------- Confirmation Modal / Receipt ---------------- */
+.receipt-box {
+  background-color: var(--color-surface-subtle);
+  border: 1.5px dashed var(--color-border);
+  border-radius: 0.9rem;
+  padding: 1.4rem;
+}
+
+.receipt-id-badge {
+  font-family: monospace;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  padding: 0.35rem 0.85rem;
+  border-radius: 0.5rem;
+  display: inline-block;
+}
+
+.modal-header-salon {
+  background: linear-gradient(135deg, var(--color-primary-light), #FDFBF7);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.success-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--color-available-bg);
+  color: var(--color-available);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  margin: 0 auto 1rem;
+}
+
+/* ---------------- Appointments List ---------------- */
+.appointment-card {
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1.4rem;
+  margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.appointment-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-border-hover);
+}
+
+.status-badge {
+  padding: 0.3rem 0.75rem;
+  border-radius: 50rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.status-confirmed {
+  background-color: var(--color-available-bg);
+  color: var(--color-available);
+}
+
+.status-cancelled {
+  background-color: var(--color-booked-bg);
+  color: var(--color-booked);
+}
+
+/* ---------------- Footer ---------------- */
+.footer-salon {
+  background-color: #231C1F;
+  color: #DDD4D8;
+  padding: 3.5rem 0 1.5rem;
+  border-top: 1px solid #382E32;
+  margin-top: 4rem;
+}
+
+.footer-salon h5 {
+  color: #FFFFFF;
+  font-size: 1.15rem;
+  margin-bottom: 1.2rem;
+}
+
+.footer-salon a {
+  color: #BDB0B6;
+}
+
+.footer-salon a:hover {
+  color: #FFFFFF;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.5rem;
+  margin-top: 2.5rem;
+  font-size: 0.85rem;
+  color: #9C8F96;
+}
+
+/* ---------------- Utility Badges ---------------- */
+.badge-gold {
+  background-color: var(--color-accent-gold-light);
+  color: var(--color-accent-gold);
+  border: 1px solid rgba(197, 160, 89, 0.3);
+  border-radius: 50rem;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-rose {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  border-radius: 50rem;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
